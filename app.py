@@ -7,7 +7,8 @@ app = Flask(__name__)
 
 # Set configurations
 app.config['SECRET_KEY'] = os.urandom(24)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@localhost/muscal'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@localhost/muscal'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:GWWoGUnWEbzBYRdkqmbfnRSLnOTiAkOv@autorack.proxy.rlwy.net:39603/railway'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize SQLAlchemy
