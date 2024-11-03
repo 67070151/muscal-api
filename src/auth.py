@@ -10,14 +10,13 @@ auth = Blueprint("auth", __name__, url_prefix="/muscal-api/auth")
 def register():
     username = request.json.get('username')
     password = request.json.get('password')
+    confirm_password = request.json.get('confirm_password')
 
-    # Validate password length
-    if len(password) < 4:
-        return jsonify({'error': "Password is too short"}), HTTP_400_BAD_REQUEST
+    # Validate password confirm
+    if password != confirm_password:
+        return jsonify({'error': "Password and Confirm password aren't equal"}), HTTP_400_BAD_REQUEST
 
-    # Validate username length and format
-    if len(username) < 3:
-        return jsonify({'error': "Username is too short"}), HTTP_400_BAD_REQUEST
+    # Validate username format
     if not username.isalnum() or " " in username:
         return jsonify({'error': "Username should be alphanumeric and have no spaces"}), HTTP_400_BAD_REQUEST
 
