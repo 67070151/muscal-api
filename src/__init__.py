@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import os
 from src.auth import auth
 from src.foods import foods
@@ -10,6 +11,7 @@ from src.constants.http_status_code import *
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
+    CORS(app)
 
     # Load configuration from environment or test config
     if test_config is None:
