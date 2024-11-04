@@ -87,9 +87,9 @@ def set_goal():
     carbohydrate_goal = request_data.get('carbohydrate_goal', user_profile.carbohydrate_goal)
     fat_goal = request_data.get('fat_goal', user_profile.fat_goal)
 
-    # Check that the sum of protein, carbs, and fats does not exceed 100
-    if protein_goal + carbohydrate_goal + fat_goal > 100:
-        return jsonify({'error': 'Sum of protein, carbohydrate, and fat goals cannot exceed 100.'}), HTTP_400_BAD_REQUEST
+    # Check that the sum of protein, carbs, and fats does not equal 100
+    if protein_goal + carbohydrate_goal + fat_goal != 100:
+        return jsonify({'error': 'Sum of protein, carbohydrate, and fat goals not equal 100.'}), HTTP_400_BAD_REQUEST
 
     # Update goals if valid
     user_profile.calorie_goal = calorie_goal
